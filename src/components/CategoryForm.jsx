@@ -1,7 +1,11 @@
+import { useState } from "react";
+
 const CategoryForm = () => {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <>
-      <div className="mb-4" id="category-container">
+      <div className={`mb-4 ${isShow ? "" : "hidden"}`} id="category-container">
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add new category
         </h2>
@@ -33,6 +37,10 @@ const CategoryForm = () => {
               className="py-2 border border-slate-500 rounded-lg flex-grow text-slate-400"
               id="cancelFromAdd"
               type="reset"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsShow(!isShow);
+              }}
             >
               cancel
             </button>
@@ -47,7 +55,8 @@ const CategoryForm = () => {
       </div>
       <button
         id="toggle-category"
-        className="outline-none border-0 text-slate-400"
+        className={`outline-none border-0 text-slate-400 ${isShow && "hidden"}`}
+        onClick={() => setIsShow(!isShow)}
       >
         Add new category
       </button>
