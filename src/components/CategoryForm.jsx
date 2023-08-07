@@ -7,7 +7,7 @@ const CategoryForm = () => {
         </h2>
         <form className="bg-slate-700 rounded-xl flex flex-col gap-y-4 p-4">
           <div>
-            <label for="title" className="block text-slate-400">
+            <label htmlFor="title" className="block text-slate-400">
               category title
             </label>
             <input
@@ -18,7 +18,7 @@ const CategoryForm = () => {
             />
           </div>
           <div>
-            <label className="block text-slate-400" for="description">
+            <label className="block text-slate-400" htmlFor="description">
               description
             </label>
             <textarea
