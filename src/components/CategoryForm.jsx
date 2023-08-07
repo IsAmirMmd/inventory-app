@@ -1,7 +1,7 @@
 const CategoryForm = () => {
   return (
     <>
-      <div className="mb-4 hidden" id="category-container">
+      <div className="mb-4" id="category-container">
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           Add new category
         </h2>
