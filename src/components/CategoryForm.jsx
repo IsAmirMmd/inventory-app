@@ -14,11 +14,13 @@ const CategoryForm = () => {
 
   const addToCategory = (e) => {
     e.preventDefault();
-    Categories.push(categoryData);
+    Categories.push({ ...categoryData, date: new Date().toISOString() });
+    console.log(Categories);
     setCategoryData({
       title: "",
       description: "",
     });
+    setIsShow(false);
   };
 
   return (
