@@ -5,6 +5,7 @@ import Navbar from "./components/NavBar";
 import ProductForm from "./components/ProductForm";
 import { Categories } from "./components/category";
 import { Products } from "./components/products";
+import ProductList from "./components/ProductList";
 
 function App() {
   const [categories, setCategories] = useState(Categories);
@@ -21,6 +22,10 @@ function App() {
             setProducts={setProducts}
             products={products}
           />
+        </div>
+        <div className="max-w-screen-sm container mx-auto p-4">
+          <h2 class="text-xl text-slate-300 font-bold mb-2">your products</h2>
+          <ProductList products={products} categories={categories} />
         </div>
       </div>
     </div>
