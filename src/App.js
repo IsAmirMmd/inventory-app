@@ -13,32 +13,37 @@ function App() {
   const [products, setProducts] = useState(Products);
   const [filteredProduct, setFilteredProduct] = useState(Products);
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("1");
 
   useEffect(() => {
-    setFilteredProduct(products);
-  }, [products]);
+    let result = products;
+    result = filterSearchTitle(result);
+    result = sortDate(result);
+    setFilteredProduct(result);
+  }, [products, sort, search]);
 
   const searchHandler = ({ target }) => {
-    setSearch(target.value);
-    const filteredWord = target.value.toLowerCase();
-    setFilteredProduct(
-      products.filter((product) =>
-        product.title.toLowerCase().includes(filteredWord)
-      )
-    );
+    setSearch(target.value.trim().toLowerCase());
   };
 
   const sortHandler = ({ target }) => {
     setSort(target.value);
-    const sortedProducts = [...filteredProduct].sort((a, b) => {
-      if (target.value === "1") {
+  };
+
+  const filterSearchTitle = (array) => {
+    return array.filter((product) =>
+      product.title.toLowerCase().includes(search)
+    );
+  };
+
+  const sortDate = (array) => {
+    return [...array].sort((a, b) => {
+      if (sort === "1") {
         return new Date(a.date) > new Date(b.date) ? -1 : 1;
-      } else if (target.value === "2") {
+      } else if (sort === "2") {
         return new Date(a.date) > new Date(b.date) ? 1 : -1;
       }
     });
-    setFilteredProduct(sortedProducts);
   };
 
   return (

@@ -23,11 +23,7 @@ const FilterProduct = ({ searchHandler, sortHandler, sort, search }) => {
           value={sort}
           onChange={sortHandler}
         >
-          <option
-            className="text-slate-700 bg-slate-200"
-            defaultValue={true}
-            value="1"
-          >
+          <option className="text-slate-700 bg-slate-200" value="1">
             newest
           </option>
           <option className="text-slate-700 bg-slate-200" value="2">
