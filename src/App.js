@@ -9,9 +9,9 @@ import ProductList from "./components/ProductList";
 import FilterProduct from "./components/FilterProduct";
 
 function App() {
-  const [categories, setCategories] = useState(Categories);
-  const [products, setProducts] = useState(Products);
-  const [filteredProduct, setFilteredProduct] = useState(Products);
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredProduct, setFilteredProduct] = useState([]);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("1");
 
@@ -35,6 +35,23 @@ function App() {
       product.title.toLowerCase().includes(search)
     );
   };
+
+  useEffect(() => {
+    const savedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setCategories(savedCategories);
+    setProducts(savedProducts);
+  }, []);
+
+  useEffect(() => {
+    if (categories.length)
+      localStorage.setItem("categories", JSON.stringify(categories));
+  }, [categories]);
+  useEffect(() => {
+    if (products.length)
+      localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   const sortDate = (array) => {
     return [...array].sort((a, b) => {
