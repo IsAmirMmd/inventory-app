@@ -24,7 +24,9 @@ function App() {
           />
         </div>
         <div className="max-w-screen-sm container mx-auto p-4">
-          <h2 class="text-xl text-slate-300 font-bold mb-2">your products</h2>
+          <h2 className="text-xl text-slate-300 font-bold mb-2">
+            your products
+          </h2>
           <ProductList products={products} categories={categories} />
         </div>
       </div>
