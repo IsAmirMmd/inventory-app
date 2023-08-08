@@ -27,7 +27,11 @@ function App() {
           <h2 className="text-xl text-slate-300 font-bold mb-2">
             your products
           </h2>
-          <ProductList products={products} categories={categories} />
+          <ProductList
+            products={products}
+            categories={categories}
+            setProducts={setProducts}
+          />
         </div>
       </div>
     </div>

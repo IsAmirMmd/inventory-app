@@ -1,4 +1,4 @@
-const ProductList = ({ products, categories }) => {
+const ProductList = ({ products, categories, setProducts }) => {
   let categoryName = "";
   const categoryNameFinder = (categoryID) => {
     categories.forEach((c) => {
@@ -7,6 +7,11 @@ const ProductList = ({ products, categories }) => {
       }
     });
     return categoryName;
+  };
+
+  const deleteProduct = (product) => {
+    console.log(product);
+    setProducts(products.filter((p) => p.id !== product.id));
   };
 
   return products.map((product) => (
@@ -22,7 +27,11 @@ const ProductList = ({ products, categories }) => {
         <span className="font-sizeClassName flex justify-center items-center h-5 w-5 bg-slate-400 text-slate-800 rounded-full border-2 border-slate-700">
           {product.quantity}
         </span>
-        <button className="text-red-500 deleted" data-id="{product.id}">
+        <button
+          className="text-red-500 deleted"
+          data-id="{product.id}"
+          onClick={() => deleteProduct(product)}
+        >
           delete
         </button>
         <button className="text-slate-500 edited" data-id="{product.id}">
