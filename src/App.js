@@ -14,13 +14,15 @@ function App() {
   const [filteredProduct, setFilteredProduct] = useState([]);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("1");
+  const [category, setCategory] = useState("0");
 
   useEffect(() => {
     let result = products;
     result = filterSearchTitle(result);
+    result = filterCategoryType(result);
     result = sortDate(result);
     setFilteredProduct(result);
-  }, [products, sort, search]);
+  }, [products, sort, search, category]);
 
   const searchHandler = ({ target }) => {
     setSearch(target.value.trim().toLowerCase());
@@ -30,10 +32,29 @@ function App() {
     setSort(target.value);
   };
 
+  const categoryHandler = ({ target }) => {
+    setCategory(target.value);
+  };
+
   const filterSearchTitle = (array) => {
     return array.filter((product) =>
       product.title.toLowerCase().includes(search)
     );
+  };
+
+  const sortDate = (array) => {
+    return [...array].sort((a, b) => {
+      if (sort === "1") {
+        return new Date(a.date) > new Date(b.date) ? -1 : 1;
+      } else if (sort === "2") {
+        return new Date(a.date) > new Date(b.date) ? 1 : -1;
+      }
+    });
+  };
+
+  const filterCategoryType = (array) => {
+    if (parseInt(category) === 0) return array;
+    return array.filter((item) => item.Category === category);
   };
 
   useEffect(() => {
@@ -52,16 +73,6 @@ function App() {
     if (products.length)
       localStorage.setItem("products", JSON.stringify(products));
   }, [products]);
-
-  const sortDate = (array) => {
-    return [...array].sort((a, b) => {
-      if (sort === "1") {
-        return new Date(a.date) > new Date(b.date) ? -1 : 1;
-      } else if (sort === "2") {
-        return new Date(a.date) > new Date(b.date) ? 1 : -1;
-      }
-    });
-  };
 
   return (
     <div className="">
@@ -85,6 +96,8 @@ function App() {
             searchHandler={searchHandler}
             sortHandler={sortHandler}
             categories={categories}
+            category={category}
+            categoryHandler={categoryHandler}
           />
           <ProductList
             products={filteredProduct}
