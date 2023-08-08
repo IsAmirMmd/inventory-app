@@ -1,6 +1,4 @@
-import { Categories } from "./category";
-
-const ProductForm = () => {
+const ProductForm = ({ categories }) => {
   return (
     <div className="mb-4">
       <h2 className="text-xl text-slate-300 font-bold mb-2">
@@ -41,11 +39,11 @@ const ProductForm = () => {
             <option value="0" className="text-slate-700 bg-slate-200">
               Select New Category
             </option>
-            {Categories.map((Category) => {
+            {categories.map((Category) => {
               return (
                 <option
-                  value={Category.id}
                   key={Category.id}
+                  value={Category.id}
                   className="text-slate-700 bg-slate-200"
                 >
                   {Category.title}

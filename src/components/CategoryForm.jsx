@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Categories } from "./category";
 
-const CategoryForm = () => {
+const CategoryForm = ({ categories, setCategories }) => {
   const [isShow, setIsShow] = useState(false);
   const [categoryData, setCategoryData] = useState({
     title: "",
@@ -12,10 +11,25 @@ const CategoryForm = () => {
     setCategoryData({ ...categoryData, [target.name]: target.value });
   };
 
+  let id = 0;
+
+  const maxIdFinder = () => {
+    categories.map((category) => {
+      return (id = category.id);
+    });
+    id++;
+  };
+
   const addToCategory = (e) => {
     e.preventDefault();
-    Categories.push({ ...categoryData, date: new Date().toISOString() });
-    console.log(Categories);
+
+    maxIdFinder();
+
+    setCategories([
+      ...categories,
+      { id, ...categoryData, date: new Date().toISOString() },
+    ]);
+
     setCategoryData({
       title: "",
       description: "",
