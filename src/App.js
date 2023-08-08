@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="">
       <div className="bg-slate-800 min-h-screen">
-        <Navbar />
+        <Navbar products={products} />
         <div className="max-w-screen-sm container mx-auto p-2">
           <CategoryForm setCategories={setCategories} categories={categories} />
           <ProductForm
