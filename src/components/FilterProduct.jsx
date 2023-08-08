@@ -10,6 +10,16 @@ const FilterProduct = ({ products, setFilteredProduct }) => {
     );
   };
 
+  const sortHandler = ({ target }) => {
+    const sortedProducts = [...products].sort((a, b) => {
+      if (target.value === "1") {
+        return new Date(a.date) > new Date(b.date) ? -1 : 1;
+      } else if (target.value === "2") {
+        return new Date(a.date) > new Date(b.date) ? 1 : -1;
+      }
+    });
+  };
+
   return (
     <>
       <div id="SearchBox" className="flex justify-between items-baseline mb-4">
