@@ -78,32 +78,37 @@ function App() {
     <div className="">
       <div className="bg-slate-800 min-h-screen">
         <Navbar products={products} />
-        <div className="max-w-screen-sm container mx-auto p-2">
-          <CategoryForm setCategories={setCategories} categories={categories} />
-          <ProductForm
-            categories={categories}
-            setProducts={setProducts}
-            products={products}
-          />
-        </div>
-        <div className="max-w-screen-sm container mx-auto p-4 overflow-x-auto">
-          <h2 className="text-xl text-slate-300 font-bold mb-2">
-            your products
-          </h2>
-          <FilterProduct
-            sort={sort}
-            search={search}
-            searchHandler={searchHandler}
-            sortHandler={sortHandler}
-            categories={categories}
-            category={category}
-            categoryHandler={categoryHandler}
-          />
-          <ProductList
-            products={filteredProduct}
-            categories={categories}
-            setProducts={setProducts}
-          />
+        <div className="container mx-auto p-4 md:flex-row flex-col flex md:justify-between lg:max-w-screen-xl md:gap-x-12">
+          <div className="max-w-screen-sm container mx-auto p-2">
+            <CategoryForm
+              setCategories={setCategories}
+              categories={categories}
+            />
+            <ProductForm
+              categories={categories}
+              setProducts={setProducts}
+              products={products}
+            />
+          </div>
+          <div className="max-w-screen-sm container mx-auto p-4 overflow-x-auto">
+            <FilterProduct
+              sort={sort}
+              search={search}
+              searchHandler={searchHandler}
+              sortHandler={sortHandler}
+              categories={categories}
+              category={category}
+              categoryHandler={categoryHandler}
+            />
+            <h2 className="text-xl text-slate-300 font-bold mb-4 mt-2">
+              your products
+            </h2>
+            <ProductList
+              products={filteredProduct}
+              categories={categories}
+              setProducts={setProducts}
+            />
+          </div>
         </div>
       </div>
     </div>
