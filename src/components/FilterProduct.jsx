@@ -1,25 +1,6 @@
 import { useState } from "react";
 
-const FilterProduct = ({ products, setFilteredProduct }) => {
-  const searchHandler = ({ target }) => {
-    const filteredWord = target.value.toLowerCase();
-    setFilteredProduct(
-      products.filter((product) =>
-        product.title.toLowerCase().includes(filteredWord)
-      )
-    );
-  };
-
-  const sortHandler = ({ target }) => {
-    const sortedProducts = [...products].sort((a, b) => {
-      if (target.value === "1") {
-        return new Date(a.date) > new Date(b.date) ? -1 : 1;
-      } else if (target.value === "2") {
-        return new Date(a.date) > new Date(b.date) ? 1 : -1;
-      }
-    });
-  };
-
+const FilterProduct = ({ searchHandler, sortHandler, sort, search }) => {
   return (
     <>
       <div id="SearchBox" className="flex justify-between items-baseline mb-4">
@@ -29,6 +10,7 @@ const FilterProduct = ({ products, setFilteredProduct }) => {
           id="SearchInput"
           className="bg-transparent rounded-md p-1 border border-slate-500 outline-0 text-slate-300"
           name="SearchInput"
+          value={search}
           onChange={searchHandler}
         />
       </div>
@@ -38,6 +20,8 @@ const FilterProduct = ({ products, setFilteredProduct }) => {
           className="bg-transparent text-xs rounded-md pl-2 border border-slate-500 outline-0 text-slate-300"
           name="sortBy"
           id="SortBy"
+          value={sort}
+          onChange={sortHandler}
         >
           <option
             className="text-slate-700 bg-slate-200"
