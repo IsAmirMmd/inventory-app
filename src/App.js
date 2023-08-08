@@ -6,6 +6,7 @@ import ProductForm from "./components/ProductForm";
 import { Categories } from "./components/category";
 import { Products } from "./components/products";
 import ProductList from "./components/ProductList";
+import FilterProduct from "./components/FilterProduct";
 
 function App() {
   const [categories, setCategories] = useState(Categories);
@@ -27,6 +28,7 @@ function App() {
           <h2 className="text-xl text-slate-300 font-bold mb-2">
             your products
           </h2>
+          <FilterProduct />
           <ProductList
             products={products}
             categories={categories}
