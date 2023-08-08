@@ -16,7 +16,7 @@ const ProductList = ({ products, categories, setProducts }) => {
 
   return products.map((product) => (
     <div key={product.id} className="flex justify-between items-center mb-2">
-      <span>{product.title}</span>
+      <span className="text-slate-400 font-bold">{product.title}</span>
       <div className="flex items-center gap-x-2">
         <span className="text-slate-400">
           {new Date(product.date).toLocaleDateString("EN-us")}
@@ -24,7 +24,7 @@ const ProductList = ({ products, categories, setProducts }) => {
         <span className="text-slate-400">
           {categoryNameFinder(product.Category)}
         </span>
-        <span className="font-sizeClassName flex justify-center items-center h-5 w-5 bg-slate-400 text-slate-800 rounded-full border-2 border-slate-700">
+        <span className="font-sizeClassName flex justify-center items-center h-5 w-5 bg-slate-400 text-slate-800 rounded-full border-2 border-slate-700 text-[10px]">
           {product.quantity}
         </span>
         <button
@@ -33,9 +33,6 @@ const ProductList = ({ products, categories, setProducts }) => {
           onClick={() => deleteProduct(product)}
         >
           delete
-        </button>
-        <button className="text-slate-500 edited" data-id="{product.id}">
-          edit
         </button>
       </div>
     </div>

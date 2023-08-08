@@ -86,7 +86,7 @@ function App() {
             products={products}
           />
         </div>
-        <div className="max-w-screen-sm container mx-auto p-4">
+        <div className="max-w-screen-sm container mx-auto p-4 overflow-x-auto">
           <h2 className="text-xl text-slate-300 font-bold mb-2">
             your products
           </h2>
