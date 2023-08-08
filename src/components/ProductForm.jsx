@@ -2,8 +2,8 @@ import { useState } from "react";
 
 const ProductForm = ({ categories, products, setProducts }) => {
   const [productData, setProductData] = useState({
-    ptitle: "",
-    pquan: "",
+    title: "",
+    quantity: 0,
     Category: "",
   });
 
@@ -31,8 +31,8 @@ const ProductForm = ({ categories, products, setProducts }) => {
     ]);
 
     setProductData({
-      ptitle: "",
-      pquan: "",
+      title: "",
+      quantity: 0,
       Category: "",
     });
   };
@@ -45,28 +45,28 @@ const ProductForm = ({ categories, products, setProducts }) => {
 
       <form className="bg-slate-700 rounded-xl flex flex-col gap-y-2 p-4">
         <div>
-          <label htmlFor="ptitle" className="block text-slate-400">
+          <label htmlFor="title" className="block text-slate-400">
             product title
           </label>
           <input
             className="bg-transparent rounded-md p-1 border border-slate-500 outline-0 text-slate-300"
             type="text"
-            id="ptitle"
-            name="ptitle"
-            value={productData.ptitle}
+            id="title"
+            name="title"
+            value={productData.title}
             onChange={changeHandler}
           />
         </div>
         <div>
-          <label htmlFor="pquan" className="block text-slate-400">
+          <label htmlFor="quantity" className="block text-slate-400">
             product quantity
           </label>
           <input
             className="bg-transparent rounded-md p-1 border border-slate-500 outline-0 text-slate-300"
             type="number"
-            name="pquan"
-            id="pquan"
-            value={productData.pquan}
+            name="quantity"
+            id="quantity"
+            value={productData.quantity}
             onChange={changeHandler}
           />
         </div>
