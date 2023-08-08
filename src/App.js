@@ -84,6 +84,7 @@ function App() {
             search={search}
             searchHandler={searchHandler}
             sortHandler={sortHandler}
+            categories={categories}
           />
           <ProductList
             products={filteredProduct}
