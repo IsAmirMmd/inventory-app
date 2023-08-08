@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-const FilterProduct = () => {
-  const [searchField, setSearchFiled] = useState("");
-
-  const changeHandler = () => {};
+const FilterProduct = ({ products, setFilteredProduct }) => {
+  const searchHandler = ({ target }) => {
+    const filteredWord = target.value.toLowerCase();
+    setFilteredProduct(
+      products.filter((product) =>
+        product.title.toLowerCase().includes(filteredWord)
+      )
+    );
+  };
 
   return (
     <>
@@ -14,8 +19,7 @@ const FilterProduct = () => {
           id="SearchInput"
           className="bg-transparent rounded-md p-1 border border-slate-500 outline-0 text-slate-300"
           name="SearchInput"
-          value={searchField}
-          onChange={changeHandler}
+          onChange={searchHandler}
         />
       </div>
       <div id="SortBox" className="flex justify-between items-baseline mb-4">

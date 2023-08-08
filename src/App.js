@@ -11,6 +11,7 @@ import FilterProduct from "./components/FilterProduct";
 function App() {
   const [categories, setCategories] = useState(Categories);
   const [products, setProducts] = useState(Products);
+  const [filteredProduct, setFilteredProduct] = useState(Products);
 
   return (
     <div className="">
@@ -28,9 +29,12 @@ function App() {
           <h2 className="text-xl text-slate-300 font-bold mb-2">
             your products
           </h2>
-          <FilterProduct />
-          <ProductList
+          <FilterProduct
             products={products}
+            setFilteredProduct={setFilteredProduct}
+          />
+          <ProductList
+            products={filteredProduct}
             categories={categories}
             setProducts={setProducts}
           />
