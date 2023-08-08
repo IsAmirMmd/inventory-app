@@ -1,3 +1,5 @@
+import { Categories } from "./category";
+
 const ProductForm = () => {
   return (
     <div className="mb-4">
@@ -35,7 +37,22 @@ const ProductForm = () => {
           <select
             className="bg-transparent rounded-md p-1 border w-full border-slate-500 text-slate-300"
             id="categoryType"
-          ></select>
+          >
+            <option value="0" className="text-slate-700 bg-slate-200">
+              Select New Category
+            </option>
+            {Categories.map((Category) => {
+              return (
+                <option
+                  value={Category.id}
+                  key={Category.id}
+                  className="text-slate-700 bg-slate-200"
+                >
+                  {Category.title}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="flex justify-between flex-grow gap-x-2">
           <button
