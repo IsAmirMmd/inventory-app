@@ -1,4 +1,42 @@
-const ProductForm = ({ categories }) => {
+import { useState } from "react";
+
+const ProductForm = ({ categories, products, setProducts }) => {
+  const [productData, setProductData] = useState({
+    ptitle: "",
+    pquan: "",
+    Category: "",
+  });
+
+  const changeHandler = ({ target }) => {
+    setProductData({ ...productData, [target.name]: target.value });
+  };
+
+  let id = 0;
+
+  const maxIdFinder = () => {
+    products.map((product) => {
+      return (id = product.id);
+    });
+    id++;
+  };
+
+  const addProductHandler = (e) => {
+    e.preventDefault();
+
+    maxIdFinder();
+
+    setProducts([
+      ...products,
+      { id, ...productData, date: new Date().toISOString() },
+    ]);
+
+    setProductData({
+      ptitle: "",
+      pquan: "",
+      Category: "",
+    });
+  };
+
   return (
     <div className="mb-4">
       <h2 className="text-xl text-slate-300 font-bold mb-2">
@@ -15,6 +53,8 @@ const ProductForm = ({ categories }) => {
             type="text"
             id="ptitle"
             name="ptitle"
+            value={productData.ptitle}
+            onChange={changeHandler}
           />
         </div>
         <div>
@@ -26,6 +66,8 @@ const ProductForm = ({ categories }) => {
             type="number"
             name="pquan"
             id="pquan"
+            value={productData.pquan}
+            onChange={changeHandler}
           />
         </div>
         <div>
@@ -35,6 +77,9 @@ const ProductForm = ({ categories }) => {
           <select
             className="bg-transparent rounded-md p-1 border w-full border-slate-500 text-slate-300"
             id="categoryType"
+            name="Category"
+            onChange={changeHandler}
+            value={productData.Category}
           >
             <option value="0" className="text-slate-700 bg-slate-200">
               Select New Category
@@ -57,6 +102,7 @@ const ProductForm = ({ categories }) => {
             type="submit"
             id="AddToProducts"
             className="rounded-lg py-2 flex-grow bg-slate-500 text-slate-200"
+            onClick={addProductHandler}
           >
             add product
           </button>
